@@ -5,6 +5,7 @@ import core.Parser;
 import core.Token;
 import visitors.PrintVisitor;
 
+// Simple interpreter for the abstract language
 public class App {
     public static void main(String[] args) throws Exception {
         var lexer = new Lexer("let x = 5;\nprint x;\n");
