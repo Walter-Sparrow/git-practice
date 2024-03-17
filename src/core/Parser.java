@@ -49,8 +49,6 @@ public class Parser {
   private Node parseFactor() {
     Token current = advance();
 
-    System.out.println("Parse factor: " + current.getValue());
-
     if (current.getType() == TokenType.NUMBER) {
       return new NumberNode(Integer.parseInt(current.getValue()));
     } else if (current.getType() == TokenType.IDENTIFIER) {
