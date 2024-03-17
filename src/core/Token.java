@@ -1,3 +1,5 @@
+package core;
+
 enum TokenType {
   NUMBER,
   IDENTIFIER,
@@ -10,7 +12,8 @@ enum TokenType {
   SEMICOLON,
   LPAREN,
   RPAREN,
-  EQUALS
+  EQUALS,
+  EOF
 }
 
 public class Token {
