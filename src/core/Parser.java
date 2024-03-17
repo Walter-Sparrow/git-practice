@@ -7,6 +7,7 @@ import nodes.IdentifierNode;
 import nodes.LetNode;
 import nodes.Node;
 import nodes.NumberNode;
+import nodes.PrintNode;
 
 public class Parser {
   private final List<Token> tokens;
@@ -48,6 +49,8 @@ public class Parser {
   private Node parseFactor() {
     Token current = advance();
 
+    System.out.println("Parse factor: " + current.getValue());
+
     if (current.getType() == TokenType.NUMBER) {
       return new NumberNode(Integer.parseInt(current.getValue()));
     } else if (current.getType() == TokenType.IDENTIFIER) {
@@ -62,6 +65,10 @@ public class Parser {
       consume(TokenType.EQUALS, "Expected '=' after identifier in 'let' statement");
       Node expression = parseExpression();
       return new LetNode(identifierName, expression);
+    } else if (current.getType() == TokenType.PRINT) {
+      System.out.println("Parse print statement");
+      Node expression = parseExpression();
+      return new PrintNode(expression);
     } else {
       throw new RuntimeException("Unexpected token: " + current.getValue());
     }

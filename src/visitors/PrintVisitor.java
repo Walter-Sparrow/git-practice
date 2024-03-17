@@ -4,6 +4,7 @@ import nodes.BinaryOperationNode;
 import nodes.IdentifierNode;
 import nodes.LetNode;
 import nodes.NumberNode;
+import nodes.PrintNode;
 
 public class PrintVisitor implements NodeVisitor<String> {
   @Override
@@ -26,5 +27,10 @@ public class PrintVisitor implements NodeVisitor<String> {
   @Override
   public String visit(LetNode node) {
     return "let " + node.getIdentifierName() + " = " + node.getExpression().accept(this);
+  }
+
+  @Override
+  public String visit(PrintNode node) {
+    return "print " + node.getExpression().accept(this);
   }
 }
